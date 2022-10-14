@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜덤 점심메뉴 고르기</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #menu_Table {
+            width: 100%;
+            height : 600px ;
+            border: 1px solid black;
+        }
+        #menu_Table tr td{
+            border: 1px solid black;
+            width: 20%;
+            
+        }
+        .menu0{background-color: red}
+        .menu1{background-color: black; color: white;}
+        .menu2{background-color: blue;}
+        .menu3{background-color: yellow;}
+        .menu4{background-color: green; color: white;}
+        .menu5{background-color: navy; color: white;}
+        .menu6{background-color: purple;}
+        .menu7{background-color: salmon;}
+        .menu8{background-color: cyan;}
+        .menu9{background-color: dodgerblue;}
+        .menu10{background-color: sandybrown;}
+        .menu11{background-color: olivedrab; color: white;}
+        .menu12{background-color: orange;}
+        .menu13{background-color: dimgray;color: white;}
+        .menu14{background-color: darkslategray; color: white;}
+        .menu15{background-color: blanchedalmond}
+        .menu16{background-color: burlywood;}
+        .menu17{background-color: aqua;}
+        .menu18{background-color: palegreen;}
+        .menu19{background-color: palevioletred;}
+        #menu_Table .menu{background-color:white ; color: black;}
+
+        
+        
+    </style>
+</head>
+<body>
+    <div id="container">
+        <table id="menu_Table">
+        </table>
+    </div>
+    <button id="btn">고르기</button>
+    <script>
+        let menu = [
+            '칼국수',
+            '어묵국수',
+            '돼지국밥',
+            '뼈다귀_해장국',
+            '돈까스',
+            '인도식_카레',
+            '치킨',
+            '맥도날드',
+            '버거킹',
+            '맘스터치',
+            '떡볶이',
+            '라멘',
+            '닭갈비',
+            '갈비탕',
+            '편의점',
+            '희성',
+            '병준',
+            '주한',
+            '일윤',
+            '밀면',
+        ]
+        const menuTable = document.querySelector('#menu_Table');
+        for (let i = 0; i < 5; i++) {
+            const trTag = document.createElement('tr');
+            menuTable.append(trTag);
+            for (let j = 0; j < 4; j++) {
+                const tdTag = document.createElement('td');
+                trTag.append(tdTag);
+                tdTag.classList.add(`menu${4 * i + j}`)
+                tdTag.classList.add(`menu`);
+                tdTag.innerHTML = menu[`${4 * i + j}`]
+            }
+        }
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', () => {
+            const randomNum = Math.floor(Math.random() * 20);
+            const todayMenu = menu[randomNum];
+            const idx = menu.indexOf(todayMenu);
+            // menuClass.classList.add("choice");
+            const menuList = document.querySelectorAll('td');
+            menuList[randomNum].classList.remove('menu');
+        })
+
+    </script>
+</body>
+</html>
